@@ -1,9 +1,9 @@
 import React from 'react';
 import { Check } from "lucide-react";
 
-import { Heading } from './components/heading';
-import { ShinyButton } from './components/shiny-button';
-import { MaxWidthWrapper } from './components/max-width-wrapper';
+import { Heading } from "@/components/heading";
+import { ShinyButton } from "@/components/shiny-button";
+import { MaxWidthWrapper } from "@/components/max-width-wrapper";
 
 const Page = () => {
   return (
