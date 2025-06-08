@@ -16,18 +16,19 @@ const Page = () => {
     const router = useRouter();
 
     const { data } = useQuery({
-        queryFn: async () => {
-            const res = await client.auth.getDatabaseSyncStatus.$get()
-            return await res.json()
-        },
         queryKey: ["get-database-sync-status"],
-            refetchInterval: (query) => {
-            return query.state.data?.isSynced ? false : 1000
+        queryFn: async () => {
+            const res = await client.auth.getDatabaseSyncStatus.$get();
+            
+            return await res.json();
+        },
+        refetchInterval: (query) => {
+            return query.state.data?.isSynced ? false : 1000;
         },
     });
 
     useEffect(() => {
-        if (data?.isSynced) router.push("/dashboard")
+        if (data?.isSynced) router.push("/dashboard");
     }, [data, router]);
 
     return (
