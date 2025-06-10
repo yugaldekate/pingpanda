@@ -2,8 +2,11 @@ import { db } from "@/db";
 import { router } from "../__internals/router";
 import { privateProcedure } from "../procedures";
 
-import { z } from "zod"
+import { z } from "zod";
 import { startOfMonth } from "date-fns";
+
+import { parseColor } from "@/utils";
+import { CATEGORY_NAME_VALIDATOR } from "@/lib/validators/category-validator";
 
 export const categoryRouter = router({
     getEventCategories: privateProcedure.query(async ({ c, ctx }) => {
@@ -111,4 +114,50 @@ export const categoryRouter = router({
 
             return c.json({ success: true });
         }),
+
+    createEventCategory: privateProcedure
+        .input(
+            z.object({
+                name: CATEGORY_NAME_VALIDATOR,
+                color: z
+                    .string()
+                    .min(1, "Color is required")
+                    .regex(/^#[0-9A-F]{6}$/i, "Invalid color format."),
+                emoji: z.string().emoji("Invalid emoji").optional(),
+            })
+        )
+        .mutation(async ({ c, ctx, input }) => {
+            const { user } = ctx;
+            const { color, name, emoji } = input;
+
+            // TODO: ADD PAID PLAN LOGIC
+
+            const eventCategory = await db.eventCategory.create({
+                data: {
+                    name: name.toLowerCase(),
+                    color: parseColor(color),
+                    emoji,
+                    userId: user.id,
+                },
+            })
+
+            return c.json({ eventCategory });
+        }), 
+        
+    insertQuickstartCategories: privateProcedure.mutation(async ({ ctx, c }) => {
+        const { user } = ctx;
+
+        const categories = await db.eventCategory.createMany({
+            data: [
+                { name: "Bug", emoji: "🐛", color: 0xff6b6b },
+                { name: "Sale", emoji: "💰", color: 0xffeb3b },
+                { name: "Question", emoji: "🤔", color: 0x6c5ce7 },
+            ].map((category) => ({
+                ...category,
+                userId: user.id,
+            })),
+        });
+
+        return c.json({ success: true, count: categories.count });
+    }),    
 });

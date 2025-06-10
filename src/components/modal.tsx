@@ -3,7 +3,7 @@ import { Dispatch, ReactNode, SetStateAction } from "react";
 import { useMediaQuery } from "@/hooks/use-media-query";
 
 import { cn } from "@/utils"
-import { Dialog, DialogContent, DialogTitle } from "./dialog";
+import { Dialog, DialogContent, DialogTitle } from "./ui/dialog";
 
 interface ModalProps {
     children?: ReactNode

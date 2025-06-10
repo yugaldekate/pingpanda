@@ -1,10 +1,15 @@
 import { db } from '@/db';
 
 import React from 'react';
+import { PlusIcon } from 'lucide-react';
 import { redirect } from 'next/navigation';
 import { currentUser } from '@clerk/nextjs/server';
-import { DashboardPage } from '@/components/dashboard-page';
+
 import { DashboardPageContent } from './dashboard-page-content';
+
+import { Button } from '@/components/ui/button';
+import { DashboardPage } from '@/components/dashboard-page';
+import { CreateEventCategoryModal } from '@/components/create-event-category-modal';
 
 const Page = async() => {
 
@@ -23,7 +28,17 @@ const Page = async() => {
     }
 
     return (
-        <DashboardPage title="Dashboard" >
+        <DashboardPage 
+            title="Dashboard" 
+            cta={
+                <CreateEventCategoryModal>
+                    <Button className="w-full sm:w-fit">
+                        <PlusIcon className="size-4 mr-2" />
+                        Add Category
+                    </Button>
+                </CreateEventCategoryModal>
+            }
+        >
             <DashboardPageContent/>
         </DashboardPage>
     )
