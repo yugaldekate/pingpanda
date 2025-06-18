@@ -16,7 +16,7 @@ import { AnimatedList } from '@/components/magicui/animated-list';
 
 const Page = () => {
 
-  const codeSnippet = `await fetch("http://localhost:3000/api/v1/events", {
+  const codeSnippet = `await fetch("https://pingpanda-jade.vercel.app/api/v1/events", {
     method: "POST",
     body: JSON.stringify({
       category: "sale",
