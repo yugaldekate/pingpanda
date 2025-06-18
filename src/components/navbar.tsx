@@ -20,6 +20,15 @@ export const Navbar = async () => {
                     </Link>
 
                     <div className="h-full flex items-center space-x-4">
+                        <Link
+                            href="/pricing"
+                            className={buttonVariants({
+                                size: "sm",
+                                variant: "ghost",
+                            })}
+                        >
+                            Pricing
+                        </Link>
                         {user ? (
                             <>
                                 <SignOutButton>
@@ -40,16 +49,6 @@ export const Navbar = async () => {
                             </>
                         ) : (
                             <>
-                                <Link
-                                    href="/pricing"
-                                    className={buttonVariants({
-                                        size: "sm",
-                                        variant: "ghost",
-                                    })}
-                                >
-                                    Pricing
-                                </Link>
-
                                 <Link
                                     href="/sign-in"
                                     className={buttonVariants({
