@@ -49,26 +49,17 @@ export const Navbar = async () => {
                             </>
                         ) : (
                             <>
-                                <Link
-                                    href="/sign-in"
-                                    className={buttonVariants({
-                                        size: "sm",
-                                        variant: "ghost",
-                                    })}
-                                >
-                                    Sign in
-                                </Link>
-
+        
                                 <div className="h-8 w-px bg-gray-200" />
 
                                 <Link
-                                    href="/sign-up"
+                                    href="/sign-in"
                                     className={buttonVariants({
                                         size: "sm",
                                         className: "flex items-center gap-1.5",
                                     })}
                                 >
-                                    Sign up <ArrowRight className="size-4" />
+                                    Sign In <ArrowRight className="size-4" />
                                 </Link>
                             </>
                         )}
