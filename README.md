@@ -76,8 +76,7 @@ Your app should now be running at: [http://localhost:3000](http://localhost:3000
 
 ## 📸 Screenshots
 
-
-![Dashboard Preview](https://github.com/user-attachments/assets/f21ab434-9579-4688-a4b9-2f29849ff102)
+![Dashboard Preview](https://github.com/user-attachments/assets/32691d72-b290-4631-8e3a-72e08ad15f52)
 ![Demo](https://github.com/user-attachments/assets/b1f54ca3-7aeb-4fa7-a53d-fe8ae3f2206b)
 ![Pricing Page](https://github.com/user-attachments/assets/b8791ce8-85a3-4656-9306-4c07e6896472)
 
