@@ -69,7 +69,6 @@ Your app should now be running at: [http://localhost:3000](http://localhost:3000
 | Database     | PostgreSQL                     |
 | Payments     | Stripe                         |
 | Notifications| Discord API                    |
-| State Mgmt   | Zustand                        |
 | Deployment   | Vercel                         |
 
 ---
